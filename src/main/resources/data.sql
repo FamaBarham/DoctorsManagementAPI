@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS specialite;
+DROP TABLE IF EXISTS medecin;
+
+
+
+CREATE TABLE specialite (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    libelle ENUM('CARDIOLOGIE', 'DERMATOLOGIE', 'PEDIATRIE', 'NEUROLOGIE', 'ORTHOPÉDIE', 'GÉNÉRALISTE') NOT NULL UNIQUE
+);
+
+
+CREATE TABLE medecin (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    horaires TEXT,
+    specialite_id INT,
+    FOREIGN KEY (specialite_id) REFERENCES specialite(id)
+);
